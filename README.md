@@ -47,7 +47,7 @@ The individuals are randomly split for training (80%) and evaluation (20%), and 
 ## Predict
 Utilize the trained MTM model to predict tissue-specific gene expression profiles on unseen individuals.
 
-####Example
+#### Example
 Prepare the input expression profiles of a specific tissue type (source tissue), such as "Whole_Blood". We can make use of the GTEx expression data as the input expression profiles by the following steps:
 - Filter the GTEx expression data based on:
     - the selected genes (GTEx_gene_id.txt)
