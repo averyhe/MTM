@@ -11,12 +11,14 @@ class TCM(nn.Module):
                  dim_out,
                  num_cats,
                  eps=2e-5,
+                 act=nn.LeakyReLU()
                ):
         super().__init__()
         self.dim_in = dim_in
         self.dim_out = dim_out
         self.num_cats = num_cats
         self.eps = eps
+        self.mid_act = act
         
         self.layer = nn.Linear(self.dim_in, self.dim_out)
         self.weight = torch.nn.Parameter(
@@ -42,4 +44,5 @@ class TCM(nn.Module):
         weight = self.weight.index_select(0, cats).view(shape)
         bias = self.bias.index_select(0, cats).view(shape)
         out = out * weight + bias
+        out = self.mid_act(out)
         return out
